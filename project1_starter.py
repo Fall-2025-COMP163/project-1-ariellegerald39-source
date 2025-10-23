@@ -148,6 +148,15 @@ def display_character(character):
     Health: 80
     Gold: 100
     """
+    print("=== CHARACTER SHEET ===")
+    print("Name: " + character[0])
+    print("Class: " + character[1])
+    print("Level:", + character[2])
+    print("Strength:", + character[3])
+    print("Magic:", + character[4])
+    print("Health:", + character[5])
+    print("Gold:", + character[6])
+    print("========================\n")
     # TODO: Implement this function
     pass
 
@@ -157,6 +166,8 @@ def level_up(character):
     Modifies the character dictionary directly
     Returns: None
     """
+    def level_up(character):
+
     # TODO: Implement this function
     # Remember to recalculate stats for the new level
     pass
