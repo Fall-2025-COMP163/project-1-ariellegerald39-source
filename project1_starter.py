@@ -166,7 +166,7 @@ def level_up(character):
     Modifies the character dictionary directly
     Returns: None
     """
-    def level_up(character):
+def level_up(character):
 
     # TODO: Implement this function
     # Remember to recalculate stats for the new level
