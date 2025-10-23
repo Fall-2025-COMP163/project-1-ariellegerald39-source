@@ -15,22 +15,32 @@ def create_character(name, character_class):
     char = create_character("Aria", "Mage")
     # Should return: {"name": "Aria", "class": "Mage", "level": 1, "strength": 5, "magic": 15, "health": 80, "gold": 100}
     """
-    level = 1
-    strength, magic, health = calculate_stats(character_class, level)
+    def create_character(name, character_class):
+        level = 1
+        strength, magic, health = calculate_stats(character_class, level)
     
-    if character_class.lower() == "warrior":
-        gold = 120
-    elif character_class.lower() == "mage":
-        gold = 90
-    elif character_class.lower() == "rogue":
-        gold = 110
-    elif character_class.lower() == "cleric":
-        gold = 100
-    else:
-        gold = 100
+        if character_class.lower() == "warrior":
+            gold = 120
+        elif character_class.lower() == "mage":
+            gold = 90
+        elif character_class.lower() == "rogue":
+            gold = 110
+        elif character_class.lower() == "cleric":
+            gold = 100
+        else:
+            gold = 100
 
-    character = [name, character_class, level, strength, magic, health, gold]
-    return character
+        character = {
+            "name": name,
+            "class": character_class,
+            "level": level,
+            "strength": strength,
+            "magic": magic,
+            "health": health,
+            "gold": gold
+        }
+        return character
+
     # TODO: Implement this function
     # Remember to use calculate_stats() function for stat calculation
     pass
