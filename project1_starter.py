@@ -118,13 +118,6 @@ def save_character(character, filename):
     pass
 
 def load_character(filename):
-    """
-    Loads character from text file
-    Returns: character dictionary if successful, None if file not found
-    """
-    # TODO: Implement this function
-    # Remember to handle file not found errors
-
     file = open (filename, "r")
     lines = file.readlines()
     file.close()
@@ -143,9 +136,24 @@ def load_character(filename):
 
     character = [name, character_class, level, strength, magic, health, gold]
     return character
+    """
+    Loads character from text file
+    Returns: character dictionary if successful, None if file not found
+    """
+    # TODO: Implement this function
+    # Remember to handle file not found errors 
     pass
 
 def display_character(character):
+    print("=== CHARACTER SHEET ===")
+    print(f"Name: {character['name']}")
+    print(f"Class: {character['class']}")
+    print(f"Level: {character['level']}")
+    print(f"Strength: {character['strength']}")
+    print(f"Magic: {character['magic']}")
+    print(f"Health: {character['health']}")
+    print(f"Gold: {character['gold']}")
+    print("========================\n")
     """
     Prints formatted character sheet
     Returns: None (prints to console)
@@ -160,20 +168,17 @@ def display_character(character):
     Health: 80
     Gold: 100
     """
-    print("=== CHARACTER SHEET ===")
-    print("Name: " + character[0])
-    print("Class: " + character[1])
-    print("Level:", + character[2])
-    print("Strength:", + character[3])
-    print("Magic:", + character[4])
-    print("Health:", + character[5])
-    print("Gold:", + character[6])
-    print("========================\n")
     # TODO: Implement this function
     pass
 
 
 def level_up(character):
+    character[2] += character[2] + 1    
+    strength, magic, health = calculate_stats(character[1], character[2])
+    character[3] = strength
+    character[4] = magic
+    character[5] = health
+    print(character[0] + " has leveled up to level " + str(character[2]) + "!")
     """
     Increases character level and recalculates stats
     Modifies the character dictionary directly
@@ -183,10 +188,17 @@ def level_up(character):
     # Remember to recalculate stats for the new level
     pass
 
+
 # Main program area (optional - for testing your functions)
 if __name__ == "__main__":
     print("=== CHARACTER CREATOR ===")
-    print("Test your functions here!")
+
+    hero = create_character("Lyra the Swift", "Rogue")
+    display_character(hero)
+
+    sucess = save_character(hero, "lyra.txt")
+    if sucess == True:
+        print("Character saved successfully!")
     
     # Example usage:
     # char = create_character("TestHero", "Warrior")
