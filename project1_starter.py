@@ -8,42 +8,44 @@ Example: AI helped with file I/O error handling logic in save_character function
 """
 
 def create_character(name, character_class):
-    """
+    level = 1
+    strength, magic, health = calculate_stats(character_class, level)
+
+    if character_class.lower() == "warrior":
+        gold = 120
+    elif character_class.lower() == "mage":
+        gold = 90
+    elif character_class.lower() == "rogue":
+        gold = 110
+    elif character_class.lower() == "cleric":
+        gold = 100
+    else:
+        gold = 100
+
+    character = {
+        "name": name,
+        "class": character_class,
+        "level": level,
+        "strength": strength,
+        "magic": magic,
+        "health": health,
+        "gold": gold
+    }
+    return character
+
+
+
+"""
     Creates a new character dictionary with calculated stats
     Returns: dictionary with keys: name, class, level, strength, magic, health, gold
     Example:
     char = create_character("Aria", "Mage")
     # Should return: {"name": "Aria", "class": "Mage", "level": 1, "strength": 5, "magic": 15, "health": 80, "gold": 100}
     """
-    def create_character(name, character_class):
-        level = 1
-        strength, magic, health = calculate_stats(character_class, level)
-    
-        if character_class.lower() == "warrior":
-            gold = 120
-        elif character_class.lower() == "mage":
-            gold = 90
-        elif character_class.lower() == "rogue":
-            gold = 110
-        elif character_class.lower() == "cleric":
-            gold = 100
-        else:
-            gold = 100
-
-        character = {
-            "name": name,
-            "class": character_class,
-            "level": level,
-            "strength": strength,
-            "magic": magic,
-            "health": health,
-            "gold": gold
-        }
-        return character
-
+ 
     # TODO: Implement this function
     # Remember to use calculate_stats() function for stat calculation
-    pass
+pass
 
 def calculate_stats(character_class, level):
     """
@@ -170,14 +172,13 @@ def display_character(character):
     # TODO: Implement this function
     pass
 
+
 def level_up(character):
     """
     Increases character level and recalculates stats
     Modifies the character dictionary directly
     Returns: None
     """
-def level_up(character):
-
     # TODO: Implement this function
     # Remember to recalculate stats for the new level
     pass
