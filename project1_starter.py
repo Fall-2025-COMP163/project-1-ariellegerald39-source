@@ -22,15 +22,15 @@ def create_character(name, character_class):
     else:
         gold = 100
 
-    character = {
-        "name": name,
-        "class": character_class,
-        "level": level,
-        "strength": strength,
-        "magic": magic,
-        "health": health,
-        "gold": gold
-    }
+    character = {}
+    character["name"] = name
+    character["class"] = character_class
+    character["level"] = level
+    character["strength"] = strength
+    character["magic"] = magic
+    character["health"] = health
+    character["gold"] = gold
+
     return character
 
 
@@ -41,11 +41,11 @@ def create_character(name, character_class):
     Example:
     char = create_character("Aria", "Mage")
     # Should return: {"name": "Aria", "class": "Mage", "level": 1, "strength": 5, "magic": 15, "health": 80, "gold": 100}
-    """
+"""
  
     # TODO: Implement this function
     # Remember to use calculate_stats() function for stat calculation
-pass
+
 
 def calculate_stats(character_class, level):
     """
@@ -83,10 +83,10 @@ def calculate_stats(character_class, level):
         magic = 7 + (2 * level)
         health = 100 + (15 * level)
 
-    return (strength, magic, health)
+    return strength, magic, health
     # TODO: Implement this function
     # Return a tuple: (strength, magic, health)
-    pass
+    
 
 def save_character(character, filename):
     file = open (filename, "w")
@@ -100,7 +100,7 @@ def save_character(character, filename):
     file.close()    
     return True
     
-    """
+"""
     Saves character to text file in specific format
     Returns: True if successful, False if error occurred
     
@@ -115,7 +115,7 @@ def save_character(character, filename):
     """
     # TODO: Implement this function
     # Remember to handle file errors gracefully
-    pass
+
 
 def load_character(filename):
     file = open (filename, "r")
@@ -136,13 +136,13 @@ def load_character(filename):
 
     character = [name, character_class, level, strength, magic, health, gold]
     return character
-    """
+"""
     Loads character from text file
     Returns: character dictionary if successful, None if file not found
     """
     # TODO: Implement this function
     # Remember to handle file not found errors 
-    pass
+
 
 def display_character(character):
     print("=== CHARACTER SHEET ===")
@@ -169,7 +169,7 @@ def display_character(character):
     Gold: 100
     """
     # TODO: Implement this function
-    pass
+    
 
 
 def level_up(character):
@@ -186,7 +186,7 @@ def level_up(character):
     """
     # TODO: Implement this function
     # Remember to recalculate stats for the new level
-    pass
+    
 
 
 # Main program area (optional - for testing your functions)
