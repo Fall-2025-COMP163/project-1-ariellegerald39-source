@@ -6,6 +6,7 @@ Date: 10/23/2025
 AI Usage: [Document any AI assistance used]
 Example: AI helped with file I/O error handling logic in save_character function
 """
+import os
 
 def create_character(name, character_class):
     level = 1
@@ -58,46 +59,47 @@ def calculate_stats(character_class, level):
     - Rogues: Medium strength, medium magic, low health
     - Clerics: Medium strength, high magic, high health
     """
-    if character_class.lower() == "warrior":
-        strength = 12 + (4 * level)
-        magic = 3 + (1 * level)
-        health = 140 + (20 * level) 
 
-    elif character_class.lower() == "mage":
-        strength = 4 + (1 * level)
-        magic = 14 + (5 * level)
-        health = 90 + (12 * level)
+def calculate_stats(character_class, level):
+    character_class = character_class.lower()
 
-    elif character_class.lower() == "rogue":
-        strength = 8 + (3 * level)
-        magic = 6 + (2 * level)
-        health = 100 + (15 * level) 
-
-    elif character_class.lower() == "cleric":
-        strength = 6 + (2 * level)
-        magic = 11 + (3 * level)
-        health = 120 + (18 * level) 
-
+    if character_class == "warrior":
+        strength = 12 + 4 * level
+        magic = 3 + 1 * level
+        health = 140 + 20 * level
+    elif character_class == "mage":
+        strength = 4 + 1 * level
+        magic = 14 + 5 * level
+        health = 90 + 12 * level
+    elif character_class == "rogue":
+        strength = 8 + 3 * level
+        magic = 6 + 2 * level
+        health = 100 + 10 * level
+    elif character_class == "cleric":
+        strength = 6 + 2 * level
+        magic = 11 + 3 * level
+        health = 120 + 18 * level
     else:
-        strength = 7 + (2 * level)
-        magic = 7 + (2 * level)
-        health = 100 + (15 * level)
+        strength = 7 + 2 * level
+        magic = 7 + 2 * level
+        health = 100 + 15 * level
 
     return strength, magic, health
-    # TODO: Implement this function
-    # Return a tuple: (strength, magic, health)
-    
 
 def save_character(character, filename):
-    file = open (filename, "w")
-    file.write("Name: " + character[0] + "\n")
-    file.write("Class: " + character[1] + "\n")
-    file.write("Level: " + str(character[2]) + "\n")
-    file.write("Strength: " + str(character[3]) + "\n")
-    file.write("Magic: " + str(character[4]) + "\n")
-    file.write("Health: " + str(character[5]) + "\n")
-    file.write("Gold: " + str(character[6]) + "\n")
-    file.close()    
+    if character == None:
+        return False
+
+    file = open(filename, "w")
+    file.write("Character Name: " + character["name"] + "\n")
+    file.write("Class: " + character["class"] + "\n")
+    file.write("Level: " + str(character["level"]) + "\n")
+    file.write("Strength: " + str(character["strength"]) + "\n")
+    file.write("Magic: " + str(character["magic"]) + "\n")
+    file.write("Health: " + str(character["health"]) + "\n")
+    file.write("Gold: " + str(character["gold"]) + "\n")
+    file.close()
+
     return True
     
 """
@@ -118,25 +120,36 @@ def save_character(character, filename):
 
 
 def load_character(filename):
-    file = open (filename, "r")
+    if not os.path.exists(filename):
+        return None
+
+    file = open(filename, "r")
     lines = file.readlines()
     file.close()
 
-    if len(lines) < 7:
-        print("File data is incomplete.")
-        return None
-    
-    name = lines[0].split(": ")[1].strip()
-    character_class = lines[1].split(": ")[1].strip()
-    level = int(lines[2].split(": ")[1].strip())
-    strength = int(lines[3].split(": ")[1].strip()) 
-    magic = int(lines[4].split(": ")[1].strip())    
-    health = int(lines[5].split(": ")[1].strip())   
-    gold = int(lines[6].split(": ")[1].strip()) 
+    character = {}
+    for line in lines:
+        parts = line.strip().split(": ")
+        if len(parts) == 2:
+            key = parts[0]
+            value = parts[1]
+            if key == "Character Name":
+                character["name"] = value
+            elif key == "Class":
+                character["class"] = value
+            elif key == "Level":
+                character["level"] = int(value)
+            elif key == "Strength":
+                character["strength"] = int(value)
+            elif key == "Magic":
+                character["magic"] = int(value)
+            elif key == "Health":
+                character["health"] = int(value)
+            elif key == "Gold":
+                character["gold"] = int(value)
 
-    character = [name, character_class, level, strength, magic, health, gold]
     return character
-"""
+    """
     Loads character from text file
     Returns: character dictionary if successful, None if file not found
     """
@@ -146,14 +159,15 @@ def load_character(filename):
 
 def display_character(character):
     print("=== CHARACTER SHEET ===")
-    print(f"Name: {character['name']}")
-    print(f"Class: {character['class']}")
-    print(f"Level: {character['level']}")
-    print(f"Strength: {character['strength']}")
-    print(f"Magic: {character['magic']}")
-    print(f"Health: {character['health']}")
-    print(f"Gold: {character['gold']}")
-    print("========================\n")
+    print("Name: " + character["name"])
+    print("Class: " + character["class"])
+    print("Level: " + str(character["level"]))
+    print("Strength: " + str(character["strength"]))
+    print("Magic: " + str(character["magic"]))
+    print("Health: " + str(character["health"]))
+    print("Gold: " + str(character["gold"]))
+    print("========================")
+    print("")
     """
     Prints formatted character sheet
     Returns: None (prints to console)
