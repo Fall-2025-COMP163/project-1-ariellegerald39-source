@@ -48,8 +48,7 @@ def create_character(name, character_class):
     # Remember to use calculate_stats() function for stat calculation
 
 
-def calculate_stats(character_class, level):
-    """
+"""
     Calculates base stats based on class and level
     Returns: tuple of (strength, magic, health)
     
@@ -58,7 +57,7 @@ def calculate_stats(character_class, level):
     - Mages: Low strength, high magic, medium health  
     - Rogues: Medium strength, medium magic, low health
     - Clerics: Medium strength, high magic, high health
-    """
+"""
 
 def calculate_stats(character_class, level):
     character_class = character_class.lower()
@@ -87,9 +86,17 @@ def calculate_stats(character_class, level):
     return strength, magic, health
 
 def save_character(character, filename):
-    if character == None:
+    if character is None:
         return False
 
+    # Get the directory from the filename
+    directory = os.path.dirname(filename)
+
+    # If there's a directory path and it does not exist, return False
+    if directory != "" and not os.path.exists(directory):
+        return False
+
+    # Otherwise, write the file
     file = open(filename, "w")
     file.write("Character Name: " + character["name"] + "\n")
     file.write("Class: " + character["class"] + "\n")
@@ -101,6 +108,7 @@ def save_character(character, filename):
     file.close()
 
     return True
+
     
 """
     Saves character to text file in specific format
@@ -114,7 +122,7 @@ def save_character(character, filename):
     Magic: [magic]
     Health: [health]
     Gold: [gold]
-    """
+"""
     # TODO: Implement this function
     # Remember to handle file errors gracefully
 
@@ -149,10 +157,10 @@ def load_character(filename):
                 character["gold"] = int(value)
 
     return character
-    """
+"""
     Loads character from text file
     Returns: character dictionary if successful, None if file not found
-    """
+"""
     # TODO: Implement this function
     # Remember to handle file not found errors 
 
@@ -168,7 +176,7 @@ def display_character(character):
     print("Gold: " + str(character["gold"]))
     print("========================")
     print("")
-    """
+"""
     Prints formatted character sheet
     Returns: None (prints to console)
     
@@ -181,7 +189,7 @@ def display_character(character):
     Magic: 15
     Health: 80
     Gold: 100
-    """
+"""
     # TODO: Implement this function
     
 
@@ -197,11 +205,11 @@ def level_up(character):
     character["health"] = health
 
     print(character["name"] + " has leveled up to level " + str(character["level"]) + "!")
-    """
+"""
     Increases character level and recalculates stats
     Modifies the character dictionary directly
     Returns: None
-    """
+"""
     # TODO: Implement this function
     # Remember to recalculate stats for the new level
     
