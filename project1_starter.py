@@ -187,12 +187,16 @@ def display_character(character):
 
 
 def level_up(character):
-    character[2] += character[2] + 1    
-    strength, magic, health = calculate_stats(character[1], character[2])
-    character[3] = strength
-    character[4] = magic
-    character[5] = health
-    print(character[0] + " has leveled up to level " + str(character[2]) + "!")
+    
+    character["level"] = character["level"] + 1
+
+    
+    strength, magic, health = calculate_stats(character["class"], character["level"])
+    character["strength"] = strength
+    character["magic"] = magic
+    character["health"] = health
+
+    print(character["name"] + " has leveled up to level " + str(character["level"]) + "!")
     """
     Increases character level and recalculates stats
     Modifies the character dictionary directly
