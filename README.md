@@ -1,99 +1,13 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/JTXl4WMa)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=21237537&assignment_repo_type=AssignmentRepo)
-# COMP 163 - Project 1: Character Creator & Chronicles
-# 🎯 Project Overview
+COMP 163 – Project 1: Character Creator & Save/Load System
+Name: Arielle Gerald
+Date: 10/29/2025
 
-Build a text-based RPG character creation and story progression system that demonstrates mastery of functions and file I/O operations.
+My RPG world takes place in Emerald City, a fantasy realm where heroes begin their journeys as one of four classes — Warrior, Mage, Rogue, or Cleric. Each class represents a unique playstyle: the Warrior is strong and resilient, the Mage focuses on high magic power, the Rogue blends agility and cunning, and the Cleric balances healing and endurance. This program serves as the foundation for a larger text-based RPG, focusing on character creation, stat calculation, leveling, and file-based save/load functionality.
 
-# Required Functions 
-Complete these functions in project1_starter.py:
+For stat design, I used simple linear formulas that scale with level. For example, Warriors gain high strength and health, Mages gain high magic, Rogues are balanced, and Clerics have strong health and magic. I chose this approach because it’s easy to understand, balanced across classes, and expandable for future features.
 
-create_character(name, character_class) - Create new character
+Unique features include a dynamic stat system that changes by class, a save/load mechanism that stores character data in a readable text file, and a level-up function that automatically updates stats as characters grow. The code is modular, making it easy to add future systems like battles or inventory management.
 
-calculate_stats(character_class, level) - Calculate character stats
+AI Usage: This entire project (including the README) was created with assistance from ChatGPT. All code was reviewed and tested by me to ensure understanding and correctness.
 
-save_character(character, filename) - Save character to file
-
-load_character(filename) - Load character from file
-
-display_character(character) - Display character info
-
-level_up(character) - Increase character level
-
-# 🎭 Character Classes
-Implement these character classes with unique stat distributions:
-
-
-Warrior: High strength, low magic, high health
-
-Mage: Low strength, high magic, medium health
-
-Rogue: Medium strength, medium magic, low health
-
-Cleric: Medium strength, high magic, high health
-
-# 📁 Required File Format
-Your save_character() function must create files in this exact format:
-
-Character Name: [name]
-
-Class: [class]
-
-Level: [level]
-
-Strength: [strength]
-
-Magic: [magic]
-
-Health: [health]
-
-Gold: [gold]
-
-
-# Run specific test file
-python -m pytest tests/test_character_creation.py -v
-
-# Test your main program
-python project1_starter.py
-
-GitHub Testing:
-
-After pushing your code, check the Actions tab to see automated test results:
-
-✅ Green checkmarks = tests passed
-❌ Red X's = tests failed (click to see details)
-
-# ⚠️ Important Notes
-Protected Files
-
-DO NOT MODIFY files in the tests/ directory
-
-DO NOT MODIFY files in the .github/ directory
-
-Modifying protected files will result in automatic academic integrity violation
-
-# AI Usage Policy
-
-✅ Allowed: AI assistance for implementation, debugging, learning
-
-📝 Required: Document AI usage in code comments
-
-🎯 Must be able to explain: Every line of code during interview
-
-# 📝 Submission Checklist
-
- All required functions implemented
- 
- Code passes all automated tests
- 
- README updated with your documentation
- 
- Interview scheduled and completed
- 
- AI usage documented in code comments
-
-# 🏆 Grading
-
-Implementation (70%): Function correctness, file operations, error handling
-
-Interview (30%): Code explanation and live coding challenge
+How to Run: Save the file as character_creator.py and run it using python character_creator.py. The program creates a character, displays its stats, and saves it to a text file (e.g., lyra.txt). You can reload the character later or modify the file to test loading and leveling functionality.

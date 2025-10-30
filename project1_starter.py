@@ -7,7 +7,7 @@ AI Usage: [Document any AI assistance used]
 Example: AI helped with file I/O error handling logic in save_character function
 
 AI Usage:
-    This project was created with assistance from ChatGPT.
+    This entire project was created with assistance from ChatGPT.
     AI assistance included:
         - Generating initial code structure and function templates
         - Writing logic for character creation, stat calculation, saving, and loading
