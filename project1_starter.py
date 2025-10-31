@@ -16,12 +16,18 @@ AI Usage:
         - Adding explanatory comments and docstrings
     All code was reviewed and tested by the student to ensure understanding and correctness.
 """
-import os
+import os # Used for file path checking and directory validation
+
+# FUNCTION: create_character
+# PURPOSE: Creates a new character with stats and starting gold
+# INPUTS: name (str), character_class (str)
+# RETURNS: dictionary containing character data
 
 def create_character(name, character_class):
-    level = 1
+    level = 1 # New characters always start at level 1
     strength, magic, health = calculate_stats(character_class, level)
 
+# Assign starting gold based on class
     if character_class.lower() == "warrior":
         gold = 120
     elif character_class.lower() == "mage":
@@ -31,8 +37,9 @@ def create_character(name, character_class):
     elif character_class.lower() == "cleric":
         gold = 100
     else:
-        gold = 100
+        gold = 100 # Default gold if class not recognized
 
+ # Store all character data in a dictionary
     character = {}
     character["name"] = name
     character["class"] = character_class
@@ -69,9 +76,15 @@ def create_character(name, character_class):
     - Clerics: Medium strength, high magic, high health
 """
 
+# FUNCTION: calculate_stats
+# PURPOSE: Calculates character stats based on class and level
+# INPUTS: character_class (str), level (int)
+# RETURNS: tuple (strength, magic, health)
+
 def calculate_stats(character_class, level):
     character_class = character_class.lower()
 
+# Different stat growth per class
     if character_class == "warrior":
         strength = 12 + 4 * level
         magic = 3 + 1 * level
@@ -88,12 +101,19 @@ def calculate_stats(character_class, level):
         strength = 6 + 2 * level
         magic = 11 + 3 * level
         health = 120 + 18 * level
+
+        # Default stats for unknown class
     else:
         strength = 7 + 2 * level
         magic = 7 + 2 * level
         health = 100 + 15 * level
 
     return strength, magic, health
+
+# FUNCTION: save_character
+# PURPOSE: Saves character data to a text file
+# INPUTS: character (dict), filename (str)
+# RETURNS: True if successful, False otherwise
 
 def save_character(character, filename):
     if character is None:
@@ -136,12 +156,16 @@ def save_character(character, filename):
     # TODO: Implement this function
     # Remember to handle file errors gracefully
 
+# FUNCTION: load_character
+# PURPOSE: Loads a saved character file into a dictionary
+# INPUTS: filename (str)
+# RETURNS: dictionary if successful, None if file not found or invalid
 
 def load_character(filename):
     if not os.path.exists(filename):
-        return None
+        return None # File doesn’t exist
 
-    file = open(filename, "r")
+    file = open(filename, "r") # Read all lines from the file
     lines = file.readlines()
     file.close()
 
@@ -174,6 +198,10 @@ def load_character(filename):
     # TODO: Implement this function
     # Remember to handle file not found errors 
 
+# FUNCTION: display_character
+# PURPOSE: Displays character stats neatly formatted
+# INPUTS: character (dict)
+# RETURNS: None (prints to console)
 
 def display_character(character):
     print("=== CHARACTER SHEET ===")
@@ -203,17 +231,22 @@ def display_character(character):
     # TODO: Implement this function
     
 
+# FUNCTION: level_up
+# PURPOSE: Increases level and recalculates stats
+# INPUTS: character (dict)
+# RETURNS: None
 
 def level_up(character):
     
-    character["level"] = character["level"] + 1
+    character["level"] = character["level"] + 1 # Increase level by one
 
-    
+    # Recalculate stats based on new level
     strength, magic, health = calculate_stats(character["class"], character["level"])
     character["strength"] = strength
     character["magic"] = magic
     character["health"] = health
-
+    
+ # Announce the level-up
     print(character["name"] + " has leveled up to level " + str(character["level"]) + "!")
 """
     Increases character level and recalculates stats
